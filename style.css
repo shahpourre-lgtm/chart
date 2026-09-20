@@ -1,0 +1,214 @@
+:root {
+    --bg-color: #131722;
+    --panel-bg: #1e222d;
+    --text-primary: #d1d4dc;
+    --text-secondary: #8a939f;
+    --accent-color: #2962ff;
+    --accent-hover: #1e4bd8;
+    --border-color: #2a2e39;
+    --error-color: #f23645;
+    --bullish-color: #089981;
+    --bearish-color: #f23645;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+/* Controls Panel */
+.controls-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: var(--panel-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.control-group {
+    flex: 1;
+    min-width: 300px;
+}
+
+.control-group h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+select,
+button,
+input[type="file"] {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: var(--accent-color);
+}
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+}
+
+input[type="file"] {
+    flex: 1;
+    cursor: pointer;
+}
+
+/* Chrome file upload button specific styling */
+input[type="file"]::file-selector-button {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.hint {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.error-msg {
+    color: var(--error-color);
+    font-size: 13px;
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+/* Chart Container */
+.chart-container-wrapper {
+    background-color: var(--panel-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    height: 600px; /* Fixed height for the chart */
+    position: relative;
+}
+
+#tvchart {
+    width: 100%;
+    height: 100%;
+}
+
+/* Results Table */
+.results-container {
+    background-color: var(--panel-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+}
+
+.results-container h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--bg-color);
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+td {
+    font-size: 14px;
+}
+
+.type-bullish {
+    color: var(--bullish-color);
+    font-weight: bold;
+}
+
+.type-bearish {
+    color: var(--bearish-color);
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .controls-panel {
+        flex-direction: column;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    .chart-container-wrapper {
+        height: 400px;
+    }
+}
