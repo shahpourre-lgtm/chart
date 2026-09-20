@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Pattern & Candlestick Recognition Tool</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PapaParse CDN for CSV Parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <!-- TradingView Lightweight Charts CDN -->
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Technical Pattern & Candlestick Recognition Tool</h1>
+        </header>
+
+        <div class="controls-panel">
+            <div class="control-group online-controls">
+                <h3>Online Data (Binance)</h3>
+                <div class="input-row">
+                    <input type="text" id="symbolInput" value="BTCUSDT" placeholder="Symbol (e.g. BTCUSDT)">
+                    <select id="timeframeSelect">
+                        <option value="15m">15m</option>
+                        <option value="1h">1h</option>
+                        <option value="4h">4h</option>
+                        <option value="1d" selected>1d</option>
+                    </select>
+                    <button id="fetchDataBtn">Fetch Data</button>
+                </div>
+                <div id="apiError" class="error-msg"></div>
+            </div>
+
+            <div class="control-group offline-controls">
+                <h3>Offline Data (CSV)</h3>
+                <div class="input-row">
+                    <input type="file" id="csvFileInput" accept=".csv">
+                </div>
+                <div class="hint">Columns expected: Date, Open, High, Low, Close, Volume</div>
+                <div id="csvError" class="error-msg"></div>
+            </div>
+        </div>
+
+        <div class="chart-container-wrapper">
+            <div id="tvchart"></div>
+        </div>
+
+        <div class="results-container">
+            <h3>Detected Patterns</h3>
+            <div class="table-wrapper">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Date/Time</th>
+                            <th>Pattern Name</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <!-- Results will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JS application -->
+    <script src="app.js"></script>
+</body>
+</html>
